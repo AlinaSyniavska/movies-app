@@ -1,0 +1,25 @@
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px 5%;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 2px solid #344a54;
+}
+
+.lightBg{
+    background: #60889a;
+}
+.darkBg{
+    background: #ad737d;
+}
+
+.headerContainer > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #344a54;
+    padding-left: 50%;
+}
