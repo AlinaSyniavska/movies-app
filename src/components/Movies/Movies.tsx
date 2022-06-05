@@ -2,7 +2,7 @@ import {FC, useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hook";
-import {movieActions} from "../../redux";
+import {genreActions, movieActions} from "../../redux";
 import {Movie} from "../Movie/Movie";
 import style from './Movies.module.css';
 
@@ -14,8 +14,12 @@ const Movies: FC = () => {
     const [query, setQuery] = useSearchParams({page: '1', with_genres: ''});
 
     useEffect(() => {
-        dispatch(movieActions.getAll({page: '1', with_genres: ''}))
+        dispatch(genreActions.getAll());
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(movieActions.getAll({page:query.get('page') || '1', with_genres:query.get('with_genres') || ''}))
+    }, [query, dispatch])
 
     return (
         <div>
