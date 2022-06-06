@@ -1,7 +1,7 @@
 
 import {IGenre} from "./genre.interface";
 
-export interface IMoviesDetails {
+export interface IMovieDetails {
     adult: boolean,
     backdrop_path: string,
     budget: number,

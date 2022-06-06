@@ -1,0 +1,62 @@
+.singleMovie {
+    height: 85vh;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    column-gap: 40px;
+}
+
+.moviePoster > img {
+    border-radius: 20px;
+    width: 400px;
+}
+
+.movieInfo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    color: #344a54;
+}
+
+.movieInfoContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.movieInfoTitle {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.details {
+    font-size: 14px;
+    display: flex;
+    column-gap: 40px;
+    flex-wrap: wrap;
+}
+
+.movieInfoOverview {
+    text-align: justify;
+}
+
+/***************************************/
+@media screen and (max-width: 992px) {
+    .moviePoster > img {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .moviePoster {
+        width: 100%;
+    }
+
+    .moviePoster > img {
+        width: 100%;
+    }
+
+    .singleMovie {
+        flex-wrap: wrap;
+    }
+}

@@ -1,5 +1,6 @@
 import {FC} from "react";
 import {Rating} from 'react-simple-star-rating'
+
 import {IRating} from "../../interfaces";
 
 interface IProps {

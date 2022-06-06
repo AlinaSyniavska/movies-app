@@ -5,6 +5,7 @@ import {IMovieShortInfo, IRating} from "../../interfaces";
 import {urlPoster} from "../../constants";
 import {useAppSelector} from "../../hook";
 import {StarRating} from "../StarRating/StarRating";
+import {Link} from "react-router-dom";
 
 interface IProps {
     movie: IMovieShortInfo;
@@ -16,12 +17,12 @@ const Movie: FC<IProps> = ({movie}) => {
     const {genres} = useAppSelector(state => state.genreReducer);
 
     const rating: IRating = {
-            ratingValue: +vote_average,
-            iconsCount: 10,
-            size: 20,
-            readonly: true,
-            fillColor: '#344a54',
-            emptyColor: 'powderblue',
+        ratingValue: +vote_average,
+        iconsCount: 10,
+        size: 20,
+        readonly: true,
+        fillColor: '#344a54',
+        emptyColor: 'powderblue',
     }
 
     function getListOfGenres(): string {
@@ -37,24 +38,24 @@ const Movie: FC<IProps> = ({movie}) => {
 
     return (
         <div>
-
-            {/*<div [className]=['movie-card'] [routerLink]=[movie.id]>*/}
-            <div className={style.movieCard}>
-                <div className={style.moviePoster}>
-                    <img src={`${urlPoster}/${poster_path}`} alt={title}/>
-                </div>
-
-                <div className={style.movieInfo}>
-                    <div className={style.description}>
-                        <div className={style.movieInfoTitle}>{title}</div>
-                        <div className={style.movieInfoGenres}>{getListOfGenres()}</div>
+            <Link to={`/movie/${movie.id}`} state={movie.id}>
+                <div className={style.movieCard}>
+                    <div className={style.moviePoster}>
+                        <img src={`${urlPoster}/${poster_path}`} alt={title}/>
                     </div>
-                    <div className={style.movieInfoRating}>
-                        <p>Rate: {vote_average}</p>
-                        <StarRating ratingProps={rating}/>
+
+                    <div className={style.movieInfo}>
+                        <div className={style.description}>
+                            <div className={style.movieInfoTitle}>{title}</div>
+                            <div className={style.movieInfoGenres}>{getListOfGenres()}</div>
+                        </div>
+                        <div className={style.movieInfoRating}>
+                            <p>Rate: {vote_average}</p>
+                            <StarRating ratingProps={rating}/>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Link>
         </div>
     );
 };
