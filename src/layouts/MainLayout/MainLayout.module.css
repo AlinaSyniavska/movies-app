@@ -1,0 +1,42 @@
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url(../../images/annie-spratt-YGBaA4UdoLY-unsplash.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.light {
+    background-image: url(../../images/annie-spratt-YGBaA4UdoLY-unsplash.jpg);
+}
+.dark {
+    background-image: url(../../images/micheile-dot-com-hJkXAy951Lw-unsplash.jpg);
+}
+
+.mainContainer{
+    width: 90%;
+    border-radius: 20px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.movieContent {
+    display: flex;
+    /*column-gap: 20px;*/
+}
+
+.genresList{
+    border-radius: 0 0 0 20px ;
+}
+.lightBg{
+    background: #60889a;
+}
+.darkBg{
+    background: #ad737d;
+}

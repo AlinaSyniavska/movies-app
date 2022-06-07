@@ -1,17 +1,19 @@
 import {FC} from "react";
 import {Outlet} from "react-router-dom";
 
-import {Header} from "../../components";
-import {Pagination} from "../../components/Pagination/Pagination";
+import style from './MainLayout.module.css';
+import {GenresListForm, Header} from "../../components";
 
 const MainLayout: FC = () => {
     return (
-        <div>
-            <div>
+        <div className={`${style.wrap} ${style.light}`}>
+            <div className={style.mainContainer}>
                 <Header/>
-                <Pagination/>
+                <div className={style.movieContent}>
+                    <div className={`${style.genresList} ${style.lightBg}`}><GenresListForm/></div>
+                    <Outlet/>
+                </div>
             </div>
-            <Outlet/>
         </div>
     );
 };

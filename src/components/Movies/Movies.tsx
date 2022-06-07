@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../hook";
 import {genreActions, movieActions} from "../../redux";
 import {Movie} from "../Movie/Movie";
 import style from './Movies.module.css';
+import {Pagination} from "../Pagination/Pagination";
 
 const Movies: FC = () => {
 
@@ -27,6 +28,7 @@ const Movies: FC = () => {
 
     return (
         <div>
+            <Pagination/>
             <div className={style.container}>{
                 movies.map(movie => <Movie key={movie.id} movie={movie}/>)
             }</div>

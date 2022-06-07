@@ -6,8 +6,6 @@ import {useLocation, useSearchParams} from "react-router-dom";
 import style from './SingleMovie.module.css';
 import {StarRating} from "../StarRating/StarRating";
 import {urlPoster} from "../../constants";
-import {useAppSelector} from "../../hook";
-import {movieReducer} from "../../redux";
 
 const SingleMovie: FC = () => {
 

@@ -1,9 +1,10 @@
 import {FC} from "react";
+import {SingleMovie} from "../../components";
 
 const MovieDetailsPage: FC = () => {
     return (
         <div>
-            MovieDetailsPage
+            <SingleMovie/>
         </div>
     );
 };

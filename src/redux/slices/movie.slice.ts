@@ -44,7 +44,7 @@ const movieSlice = createSlice({
     reducers: {
         setQueryParams: (state, action) => {
             state.currentPage = action.payload.currentPage;
-            state.genreIds = action.payload.genresIds;
+            state.genreIds  = action.payload.genresIds;
         },
     },
     extraReducers: builder => {
