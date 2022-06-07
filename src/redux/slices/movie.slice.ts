@@ -7,15 +7,15 @@ import {movieService} from "../../services";
 interface IState {
     movies: IMovieShortInfo[];
     totalPages: number;
-    currentPage: string;
-    genreIds: string;
+    page: string;
+    with_genres: string;
 }
 
 const initialState: IState = {
     movies: [],
     totalPages: 1,
-    currentPage: '1',
-    genreIds: '',
+    page: '1',
+    with_genres: '',
 };
 
 const getAll = createAsyncThunk<IMoviesList, { page: string, with_genres: string }>(
@@ -30,21 +30,13 @@ const getAll = createAsyncThunk<IMoviesList, { page: string, with_genres: string
     }
 );
 
-/*const getById = createAsyncThunk<IMovieDetails, { id: string }>(
-    'movieSlice/getById',
-    async ({id}) => {
-        const {data} = await movieService.getById(id);
-        return data;
-    }
-);*/
-
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
         setQueryParams: (state, action) => {
-            state.currentPage = action.payload.currentPage;
-            state.genreIds  = action.payload.genresIds;
+            state.page = action.payload.page;
+            state.with_genres  = action.payload.with_genres;
         },
     },
     extraReducers: builder => {

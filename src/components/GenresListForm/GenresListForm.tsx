@@ -9,9 +9,9 @@ import {useSearchParams} from "react-router-dom";
 const GenresListForm: FC = () => {
     const [checked, setChecked] = useState<string[]>([]);
     const {genres} = useAppSelector(state => state.genreReducer);
-    const {currentPage, genreIds} = useAppSelector(state => state.movieReducer);
+    const {page, with_genres} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
-    const [query, setQuery] = useSearchParams({page: `${currentPage}`, with_genres: `${genreIds}`});
+    const [query, setQuery] = useSearchParams({page: `${page}`, with_genres: `${with_genres}`});
 
     // Add/Remove checked item from list
     const handleCheck = (event: any) => {
@@ -34,10 +34,9 @@ const GenresListForm: FC = () => {
         : "";*/
 
     function submitForm() {
-        let str = '14,36';
-        // dispatch(movieActions.setQueryParams({currentPage: query.get('page'), genreIds: query.get('with_genres')}))
-        // setQuery({page: '1', with_genres: `${checked.join(',')}`})
-        setQuery({page: '1', with_genres: str})
+        dispatch(movieActions.setQueryParams({page: query.get('page'), with_genres: checked.join(',')}))
+
+        setQuery({page: '1', with_genres: checked.join(',')})
     }
 
     return (

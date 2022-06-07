@@ -9,22 +9,22 @@ import {Pagination} from "../Pagination/Pagination";
 
 const Movies: FC = () => {
 
-    const {movies, currentPage, genreIds} = useAppSelector(state => state.movieReducer);
+    const {movies, page, with_genres} = useAppSelector(state => state.movieReducer);
     const dispatch = useAppDispatch();
 
-    const [query, setQuery] = useSearchParams({page: `${currentPage}`, with_genres: `${genreIds}`});
+    const [query, setQuery] = useSearchParams({page: `${page}`, with_genres: `${with_genres}`});
 
     useEffect(() => {
-        dispatch(movieActions.setQueryParams({currentPage: query.get('page'), genreIds: query.get('with_genres')}))
-        setQuery({page: `${currentPage}`, with_genres: `${genreIds}`})
+        dispatch(movieActions.setQueryParams({page: query.get('page'), with_genres: `${with_genres}`}))
+        setQuery({page: `${page}`, with_genres: `${with_genres}`})
         dispatch(genreActions.getAll());
-    }, [currentPage, genreIds])
+    }, [page])
 
     useEffect(() => {
-        dispatch(movieActions.setQueryParams({currentPage: query.get('page'), genreIds: query.get('with_genres')}))
+        dispatch(movieActions.setQueryParams({page: query.get('page'), with_genres: `${with_genres}`}))
 
-        dispatch(movieActions.getAll({page:query.get('page') || '1', with_genres:query.get('with_genres') || ''}))
-    }, [query])   //[query, dispatch]
+        dispatch(movieActions.getAll({page:query.get('page') || '1', with_genres: `${with_genres}`}))
+    }, [query])
 
     return (
         <div>

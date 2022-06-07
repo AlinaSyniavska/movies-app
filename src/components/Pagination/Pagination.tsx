@@ -5,8 +5,8 @@ import {useSearchParams} from "react-router-dom";
 import {useAppSelector} from "../../hook";
 
 const Pagination: FC = () => {
-    const {totalPages} = useAppSelector(state => state.movieReducer);
-    const [query, setQuery] = useSearchParams({page: '1'});
+    const {totalPages, page, with_genres} = useAppSelector(state => state.movieReducer);
+    const [query, setQuery] = useSearchParams({page: `${page}`, with_genres: `${with_genres}`});
     const [pages, setPages] = useState(totalPages);
 
     useEffect(() => {
@@ -27,21 +27,25 @@ const Pagination: FC = () => {
         const nextPage = document.getElementById('next');
         // const prevPage = document.getElementById('prev');
 
-        let page = parseInt(query.get('page') || '1', 10) ;
+        let curPage = parseInt(query.get('page') || '1', 10) ;
+        console.log('----------' + curPage);
 
         if (e.target === nextPage) {
-            page++;
-            if (page > pages) {
-                page = 1;
+            curPage++;
+            if (curPage > pages) {
+                curPage = 1;
             }
+            console.log('+++++++++' + curPage);
         } else {
-            page--;
-            if (page <= 0) {
-                page = pages;
+            curPage--;
+            if (curPage <= 0) {
+                curPage = pages;
             }
         }
 
-        setQuery({page: `${page}`, with_genres: ''});
+
+        console.log(curPage);
+        setQuery({page: `${curPage}`, with_genres: `${with_genres}`});
     }
 
     function toUp() {
