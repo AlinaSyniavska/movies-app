@@ -2,6 +2,7 @@ import {FC, useState} from 'react';
 
 import {useAppDispatch, useAppSelector} from "../../hook";
 import style from './GenresListForm.module.css'
+import '../../App.css'
 import {movieActions} from "../../redux";
 import {useSearchParams} from "react-router-dom";
 
@@ -22,7 +23,7 @@ const GenresListForm: FC = () => {
             updatedList.splice(checked.indexOf(event.target.value), 1);
         }
 
-        console.log(updatedList);
+        // console.log(updatedList);
         setChecked(updatedList);
     };
 

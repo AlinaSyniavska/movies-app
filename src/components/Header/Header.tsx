@@ -2,9 +2,11 @@ import {FC} from "react";
 import {NavLink} from "react-router-dom";
 
 import style from './Header.module.css'
+import '../../App.css'
 import {UserInfo} from "../UserInfo/UserInfo";
 
 const Header: FC = () => {
+
     return (
         <div>
             <div className={`${style.headerContainer} ${style.lightBg}`}>
